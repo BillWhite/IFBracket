@@ -1,40 +1,5 @@
-$fn = 120;
-// This is the size of the box itself. 
-DevW = 290;
-DevD = 106;
-DevH = 43;
-Device = [DevW, DevD, DevH];
-
-// This is the size of the outside of the cover. It's
-// a bit larger than the device, and uniform in all
-// three dimensions.
-OPadW = 10;
-OPadD = 10;
-OPadH = 10;
-OPad = [OPadW, OPadD, OPadH];
-
-// This is the size of the space where the device sits.
-// It's slightly larger than the device, and also
-// uniform in all three dimensions.
-IPadW = 5;
-IPadD = 5;
-IPadH = 5;
-IPad = [IPadW, IPadD, IPadH];
-
-// This is the height of the straps. It must be in the range
-//     OPadH > StrapH > OPadH-IPadH
-StrapW = 20;
-StrapD = .7*DevD;
-StrapH = (OPadH - IPadH)/2;
-// The front has a lip. This is the depth of the lip.
-ZPadW =  3;
-ZPadD = 20;
-ZPadH =  3;
-ZPad = [ZPadW, ZPadD, ZPadH];
-
-SPad = 5;
-
-function delta(t) = [t, t, t];
+include <config.scad>
+include <mockup.scad>
 
 module Strap(offset=[0, 0, 0],
              rotation=[0, 0, 0],
@@ -245,8 +210,10 @@ module BottomLeft() {
 }
 
 // Assembly();
-translate([OPadW, 0, OPadH]) TopRight();
-translate([-OPadW, 0, OPadH]) TopLeft();
-
-translate([OPadW, 0, -OPadH]) BottomRight();
-translate([-OPadW, 0, -OPadH]) BottomLeft();
+if ($preview) {
+    translate([OPadW, 0, OPadH]) TopRight();
+    translate([-OPadW, 0, OPadH]) TopLeft();
+    mockup();
+    translate([OPadW, 0, -OPadH]) BottomRight();
+    translate([-OPadW, 0, -OPadH]) BottomLeft();
+}
