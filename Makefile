@@ -1,4 +1,7 @@
 SOURCES=LT_Bracket LB_Bracket RT_Bracket RB_Bracket Strap
+CLEANOBJS=$(patsubst %,%.d,$(SOURCES)) \
+          $(patsubst %,%.stl,$(SOURCES)) \
+          README.html
 
 all: $(patsubst %,%.stl,$(SOURCES))
 
@@ -6,7 +9,7 @@ all: $(patsubst %,%.stl,$(SOURCES))
 	openscad -o $@ $< -d $*.d
 
 clean:
-	rm -f *.d *.stl
+	rm -f $(CLEANOBJS)
 
 -include LT_Bracket.d
 -include LB_Bracket.d
