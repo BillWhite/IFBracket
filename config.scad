@@ -4,18 +4,23 @@ include <ruler.scad>
 $fn = $preview ? 30 : 120;
 fnCornerValue = $preview ? 30 : 30;
 
-// This is the size of the box itself. 
+KnobH = 15;
+KnobD = 11.1;
+ButtonDim = [6.9, 5.3, 3.6];
+
+// This is the size of the device itself. 
 DevW = 290;
 DevD = 106;
 DevH = 43;
 Device = [DevW, DevD, DevH];
 
-// This is the size of the outside of the cover. It's
-// a bit larger than the device, and uniform in all
+// This is the delta between the size of the outside
+// of the cover and the size the device. It's
+// a significantly larger than the device, and uniform in all
 // three dimensions.
-OPadW = 10;
-OPadD = 10;
-OPadH = 10;
+OPadW = 7;
+OPadD = 7;
+OPadH = 7;
 OPad = [OPadW, OPadD, OPadH];
 
 // This is the size of the space where the device sits.
@@ -28,20 +33,39 @@ IPad = [IPadW, IPadD, IPadH];
 
 // This is the height of the straps. It must be in the range
 //     OPadH > StrapH > OPadH-IPadH
-StrapW = 20;
-StrapD = .7*DevD;
+StrapW = 0.8*DevH;
+StrapD = 0.7*DevD;
 StrapH = (OPadH - IPadH)/2;
 // The front has a lip. This is the depth of the lip.
-ZPadW =  3;
+ZPadW =  1;
 ZPadD = 20;
-ZPadH =  3;
+ZPadH =  1;
 ZPad = [ZPadW, ZPadD, ZPadH];
 
+BlockW = 4;
+BlockD = 2;
+BlockH = DevH;
+Block  = [BlockW, BlockD, BlockH];
+LBlockW = 43 - BlockW/2;
+RBlockW = 44.6 - BlockW/2;
 SPad = 5;
 
-KnobH = 15;
-KnobD = 11.1;
-ButtonDim = [6.9, 5.3, 3.6];
+DCW=9;
+DCD=0.5;
+DCH=11;
+DC=[DCW, DCD, DCH];
+DCPosW=10;
+DCPosH=27;
+DCPosD=0;
+
+USBW=12;
+USBD=.5;
+USBH=11.3;
+USB=[USBW, USBD, USBH];
+USBPosW=27;
+USBPosD=0;
+USBPosH=25;
+USBPos=[USBPosW, USBPosD, USBPosH];
 
 GainW  = 25;
 Gain1L = 125;

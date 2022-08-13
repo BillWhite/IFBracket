@@ -16,3 +16,4 @@ clean:
 -include RT_Bracket.d
 -include RB_Bracket.d
 -include IFBracket.d
+-include Strap.d

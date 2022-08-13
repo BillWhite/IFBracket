@@ -91,6 +91,22 @@ module shell() {
     };
 }
 
+module DCInSection() {
+    color("black") {
+        translate([0, -DevD/2,DevH/2-DCPosH]) {
+            cube(DC, center=true);
+        }
+    }
+}
+
+module USBInSection() {
+    color("black") {
+        translate([0, -DevD/2,DevH/2-USBPosH]) {
+            cube(USB, center=true);
+        }
+    }
+}
+
 module mockup() {
     g() {
         shell();
@@ -107,6 +123,11 @@ module mockup() {
         X(-DevW/2 + Input2L) inputsection();
         X(-DevW/2 + Input3L) inputsection();
         X(-DevW/2 + Input4L) inputsection();
+        // Back Side
+        rotate([0, 0, 180]) {
+            X(-DevW/2+DCPosW) DCInSection();
+            X(-DevW/2+USBPosW) USBInSection();
+        }
     }
 }
 
@@ -115,7 +136,7 @@ if ($preview) {
         // button();
         // knob();
         // jack();
-        mockup();
+        // mockup();
         // mixsection();
         // gainsection();
         // inputsection();
